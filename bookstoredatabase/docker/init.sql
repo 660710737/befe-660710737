@@ -1,6 +1,6 @@
 -- สร้างตาราง books
 CREATE TABLE books (
-	
+	id SERIAL PRIMARY KEY,
 	title VARCHAR(255) NOT NULL,
 	author VARCHAR(255),
 	isbn VARCHAR(50),
@@ -26,6 +26,7 @@ FOR EACH ROW
 EXECUTE FUNCTION update_modified_column();
 
 -- สร้าง index บน title เพื่อเพิ่มประสิทธิภาพการค้นหา
+CREATE INDEX idx_books_title ON books(title);
 
 -- เพิ่มข้อมูลตัวอย่าง
 INSERT INTO books (title, author, isbn, year, price) VALUES
